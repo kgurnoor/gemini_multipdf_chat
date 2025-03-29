@@ -4,7 +4,7 @@ This Streamlit application allows you to interact with multiple PDF documents us
 
 # General diagram to understand LLMs
 
-![LangChain Diagram](images/langchain_diagram.png)
+![LangChain Diagram](images/langchain-working.png)
 
 * **Chat with PDFs:** Ask questions and get answers based on the content of your uploaded PDF files. This core feature lets users upload PDF documents and then ask questions about the content within those PDFs. The application uses LangChain and Google's Gemini model to provide answers based on the information found in the PDFs. 
 * **Merge PDFs:** Combine multiple PDF files into a single document.This feature allows users to combine multiple separate PDF files into a single, unified PDF document. This is useful for organizing and consolidating information from various sources.
