@@ -1,104 +1,104 @@
-# Gemini PDF Chatbot
+# Gemini Multi-PDF Chatbot
 
-Gemini PDF Chatbot is a Streamlit-based application that allows users to chat with a conversational AI model trained on PDF documents. The chatbot extracts information from uploaded PDF files and answers user questions based on the provided context.
-<https://gmultichat.streamlit.app/>
+This Streamlit application allows you to interact with multiple PDF documents using Google's Gemini language model. It provides functionalities to:
 
-<https://github.com/kaifcoder/gemini_multipdf_chat/assets/57701861/f6a841af-a92d-4e54-a4fd-4a52117e17f6>
+# General diagram to understand LLMs
 
-## Features
+![LangChain Diagram](images/langchain_diagram.png)
 
-- **PDF Upload:** Users can upload multiple PDF files.
-- **Text Extraction:** Extracts text from uploaded PDF files.
-- **Conversational AI:** Uses the Gemini conversational AI model to answer user questions.
-- **Chat Interface:** Provides a chat interface to interact with the chatbot.
+* **Chat with PDFs:** Ask questions and get answers based on the content of your uploaded PDF files. This core feature lets users upload PDF documents and then ask questions about the content within those PDFs. The application uses LangChain and Google's Gemini model to provide answers based on the information found in the PDFs. 
+* **Merge PDFs:** Combine multiple PDF files into a single document.This feature allows users to combine multiple separate PDF files into a single, unified PDF document. This is useful for organizing and consolidating information from various sources.
+* **Extract Images from PDF:** Extract images from a single uploaded PDF. Users can extract all the images embedded within a PDF document. This is helpful for retrieving visual content from PDFs.
+* **Convert PDF Images to Text (OCR):** Convert images within PDFs to text. This feature uses Optical Character Recognition (OCR) to convert images within PDF files into editable text. This is essential for accessing and searching text that is stored as images in PDFs.
 
 ## Getting Started
 
-If you have docker installed, you can run the application using the following command:
+### Prerequisites
 
-- Obtain a Google API key and set it in the `.env` file.
+* Python 3.7+
+* A Google Cloud Platform project with the Gemini API enabled.
+* A Google API key.
 
-   ```.env
-   GOOGLE_API_KEY=your_api_key_here
-   ```
+### Installation
 
-```bash
-docker compose up --build
-```
+1.  **Clone the repository:**
+
+    ```bash
+    git clone [https://github.com/kgurnoor/gemini_multipdf_chat.git](https://www.google.com/search?q=https://github.com/kgurnoor/gemini_multipdf_chat.git)
+    cd gemini_multipdf_chat
+    ```
+
+2.  **Create a virtual environment (recommended):**
+
+    ```bash
+    python -m venv venv
+    source venv/bin/activate  # On macOS/Linux
+    venv\Scripts\activate  # On Windows
+    ```
+
+3.  **Install the required packages:**
+
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+4.  **Create a `.env` file:**
+
+    Create a file named `.env` in the root directory of the project and add your Google API key:
+
+    ```
+    GOOGLE_API_KEY=YOUR_GOOGLE_API_KEY
+    ```
+
+    Replace `YOUR_GOOGLE_API_KEY` with your actual API key.
+
+### Running the Application
+
+1.  **Run the Streamlit application:**
+
+    ```bash
+    streamlit run app.py
+    ```
+
+2.  **Access the application:**
+
+    Open your web browser and go to `http://localhost:8501`.
+
+### Using the Application
+
+1.  **Upload PDF files:** Use the file uploader in the sidebar to upload one or more PDF files.
+2.  **Submit and Process:** Click the "Submit & Process" button to process the PDFs and create a vector store.
+3.  **Chat with PDFs:** Enter your question in the chat input and press Enter.
+4.  **Merge PDFs:** Upload two or more PDF files and click "Merge PDFs" to download a merged PDF.
+5.  **Extract Images:** Upload a single PDF and click "Extract Images from PDF" to view the extracted images.
+6.  **Convert Images to Text (OCR):** Upload one or more PDFs, and click “Convert PDF images to Text” to view the text.
+7.  **Clear:** Click the "Clear" button to clear the chat history and any processed data.
+
+### Docker (Optional)
+
+If you prefer to run the application using Docker:
+
+#### Building and running your application
+
+When you're ready, start your application by running:
+
+`docker compose up --build`.
 
 Your application will be available at <http://localhost:8501>.
 
-### Deploying your application to the cloud
+#### Deploying your application to the cloud
 
 First, build your image, e.g.: `docker build -t myapp .`.
-If your cloud uses a different CPU architecture than your development
-machine (e.g., you are on a Mac M1 and your cloud provider is amd64),
-you'll want to build the image for that platform, e.g.:
-`docker build --platform=linux/amd64 -t myapp .`.
+
+If your cloud uses a different CPU architecture than your development machine (e.g., you are on a Mac M1 and your cloud provider is amd64), you'll want to build the image for that platform, e.g.: `docker build --platform=linux/amd64 -t myapp .`.
 
 Then, push it to your registry, e.g. `docker push myregistry.com/myapp`.
 
-Consult Docker's [getting started](https://docs.docker.com/go/get-started-sharing/)
-docs for more detail on building and pushing.
+Consult Docker's [getting started](https://docs.docker.com/go/get-started-sharing/) docs for more detail on building and pushing.
 
 ### References
 
-- [Docker's Python guide](https://docs.docker.com/language/python/)
-
-## Local Development
-
-Follow these instructions to set up and run this project on your local machine.
-
-   **Note:** This project requires Python 3.10 or higher.
-
-1. **Clone the Repository:**
-
-   ```bash
-   git clone https://github.com/your-username/gemini-pdf-chatbot.git
-   ```
-
-2. **Install Dependencies:**
-
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-3. **Set up Google API Key:**
-   - Obtain a Google API key and set it in the `.env` file.
-
-   ```bash
-   GOOGLE_API_KEY=your_api_key_here
-   ```
-
-4. **Run the Application:**
-
-   ```bash
-   streamlit run main.py
-   ```
-
-5. **Upload PDFs:**
-   - Use the sidebar to upload PDF files.
-   - Click on "Submit & Process" to extract text and generate embeddings.
-
-6. **Chat Interface:**
-   - Chat with the AI in the main interface.
-
-## Project Structure
-
-- `app.py`: Main application script.
-- `.env`: file which will contain your environment variable.
-- `requirements.txt`: Python packages required for working of the app.
-- `README.md`: Project documentation.
-
-## Dependencies
-
-- PyPDF2
-- langchain
-- Streamlit
-- google.generativeai
-- dotenv
-
-## Acknowledgments
-
-- [Google Gemini](https://ai.google.com/): For providing the underlying language model.
-- [Streamlit](https://streamlit.io/): For the user interface framework.
+* [Docker's Python guide](https://docs.docker.com/language/python/)
+* [Streamlit Documentation](https://streamlit.io/)
+* [LangChain Documentation](https://python.langchain.com/docs/get_started/introduction)
+* [Google Generative AI Documentation](https://ai.google.dev/)
