@@ -30,8 +30,11 @@ RUN adduser \
     --uid "${UID}" \
     appuser
 
-# Change the ownership of the /app directory to appuser    
-RUN chown appuser:appuser /app            
+# Change the ownership of the /app directory to appuser
+RUN chown appuser:appuser /app
+
+# Create the faiss_index directory and set permissions
+RUN mkdir faiss_index && chown appuser:appuser faiss_index
 
 # Download dependencies as a separate step to take advantage of Docker's caching.
 # Leverage a cache mount to /root/.cache/pip to speed up subsequent builds.
@@ -49,8 +52,6 @@ COPY . .
 
 # Expose the port that the application listens on.
 EXPOSE 8501
-
-
 
 # Run the application.
 CMD streamlit run app.py
