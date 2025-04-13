@@ -1,8 +1,10 @@
 # Gemini Multi-PDF Chatbot (Dockerized)
 
+**Access the deployed application directly at:** [https://chat-with-pdfs-udouqrabxvtk5axzfotmnz.streamlit.app/](https://chat-with-pdfs-udouqrabxvtk5axzfotmnz.streamlit.app/)
+
 This Streamlit application allows you to interact with multiple PDF documents using Google's Gemini language model. It provides functionalities to:
 
-![LangChain Diagram](images/langchain-working.png)
+[![LangChain Diagram](images/langchain-working.png)](images/langchain-working.png)
 
 * **Chat with PDFs:** Ask questions and get answers based on the content of your uploaded PDF files. This core feature lets users upload PDF documents and then ask questions about the content within those PDFs. The application uses LangChain and Google's Gemini model to provide answers based on the information found in the PDFs.
 * **Merge PDFs:** Combine multiple PDF files into a single document. This feature allows users to combine multiple separate PDF files into a single, unified PDF document. This is useful for organizing and consolidating information from various sources.
@@ -31,8 +33,8 @@ This Streamlit application allows you to interact with multiple PDF documents us
 
     ```bash
     python -m venv venv
-    source venv/bin/activate  # On macOS/Linux
-    venv\Scripts\activate  # On Windows
+    source venv/bin/activate   # On macOS/Linux
+    venv\Scripts\activate   # On Windows
     ```
 
 3.  **Install the required packages:**
